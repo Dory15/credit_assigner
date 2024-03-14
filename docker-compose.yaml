@@ -1,11 +1,9 @@
-# sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong@Passw0rd>" \
-#    -p 1433:1433 --name sql1 --hostname sql1 \
-#    -d \
-#    mcr.microsoft.com/mssql/server:2022-latest
-
 networks:
   creadit_assigner:
 
+volumes:
+  mssql_data:
+    driver: local
 
 services:
 
@@ -13,10 +11,10 @@ services:
     image: dory15/credit_assigner:v1.0.0
     environment:
       ENV: "prod"
-      DB_STRING: "sqlserver://user:pass@sqlserver:1433?database=credit_assigner"
+      DB_STRING: "sqlserver://sa:pass@sqlserver:1433?database=credit_assigner"
       PORT: "3000"
       ACCEPT_EULA: Y
-      SA_PASSWORD: "Strong@Passw0rd"
+      SA_PASSWORD: "pass"
     ports:
       - "3000:3000"
     container_name: creadit_assigner
@@ -28,11 +26,11 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       ACCEPT_EULA: Y
-      SA_PASSWORD: "Strong@Passw0rd"
+      SA_PASSWORD: "pass"
     ports:
       - "1433:1433"
-    # volumes:
-    #   - ./mssql:/var/opt/mssql
+    volumes:
+      - mssql_data:/var/opt/mssql
     hostname: sql1
     container_name: sql1
     restart: always

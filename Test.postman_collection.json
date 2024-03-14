@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "b1392cb5-2ab1-4589-94e3-a0ad1a474d86",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4200828"
+	},
+	"item": [
+		{
+			"name": "Investment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"investment\": 3100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://credit_assigner.duffelectronics.com/credit-assignment",
+					"protocol": "https",
+					"host": [
+						"credit_assigner",
+						"duffelectronics",
+						"com"
+					],
+					"path": [
+						"credit-assignment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Statistics",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://credit_assigner.duffelectronics.com/statistics",
+					"protocol": "https",
+					"host": [
+						"credit_assigner",
+						"duffelectronics",
+						"com"
+					],
+					"path": [
+						"statistics"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
